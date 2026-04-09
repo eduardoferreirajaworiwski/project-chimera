@@ -1,0 +1,16 @@
+services:
+  chimera-trap:
+    build: .
+    container_name: chimera-bunker
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    restart: unless-stopped
+    network_mode: bridge
+    security_opt:
+      - no-new-privileges:true
